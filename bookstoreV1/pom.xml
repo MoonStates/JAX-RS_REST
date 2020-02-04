@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.univ-lr.info</groupId>
+  <artifactId>bookstore</artifactId>
+  <name>Bookstore</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <version.thorntail>2.3.0.Final</version.thorntail>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.version>3.1</maven.compiler.version>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.thorntail</groupId>
+        <artifactId>bom-all</artifactId>
+        <version>${version.thorntail}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <finalName>Bookstore</finalName>
+    <plugins>
+      <plugin>
+        <groupId>io.thorntail</groupId>
+        <artifactId>thorntail-maven-plugin</artifactId>
+        <version>${version.thorntail}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    
+    <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>jaxrs-jaxb</artifactId>
+    </dependency>
+    <!-- for testing -->
+    <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>arquillian</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>2.12</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>2.28</version>
+    </dependency>
+  </dependencies>
+
+</project>
